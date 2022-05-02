@@ -4,7 +4,11 @@
 
 Simulação de um jogo cujo objetivo é adivinhar o número sorteado. Ao realizar a tentativa, o jogo vai dizer se
 o usuário acertou. Caso não tenha acertado, o jogo vai dizer se o número sorteado é maior ou menor que o
-número que o usuário chutou. 
+número que o usuário chutou.
+
+## Aplicação no ar
+
+A aplicação encontra-se online no endereço https://desafiostudiosol.herokuapp.com/
 
 ## Instalação e execução do projeto
 
