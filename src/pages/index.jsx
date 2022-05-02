@@ -25,10 +25,8 @@ const Index = () => {
     if (!isSupported) return;
 
     let listener = function(e) {
-      console.log('teste');
-      console.log(e)
       if (e.key === 'Enter') {
-        handleAnswer()
+        handleAnswer();
       }
     }
 
@@ -50,22 +48,25 @@ const Index = () => {
       method: "GET",
     })
       .then(resp => {
-        resp.json().then(data => {
-          if (data.value) {
-            setRightAnswer(data.value);
-          } else {
-            setColor('#CC3300');
-            setMessage('ERRO');
-            setClassResponse('error')
-            setNumberShown(data.StatusCode);
-            setEndGame(true);
-          }
-        })
+        if (resp.ok) {
+          return resp.json();
+        }
+        return Promise.reject(resp);
+      }) 
+      .then(data => {
+        setRightAnswer(data.value);
+      })
+      .catch(err => {
+        setColor('#CC3300');
+        setMessage('ERRO');
+        setClassResponse('error')
+        setNumberShown(err.status);
+        setEndGame(true);
       });
   }
 
   const handleInput = (e) => {
-    if (/$^|^[1-9][0-9]{0,2}$/.test(e.target.value)) {
+    if (/^$|^[1-9][0-9]{0,2}$|^[0]{0,1}$/.test(e.target.value)) {
       setAnswer(e.target.value);
     }
   }
@@ -74,7 +75,7 @@ const Index = () => {
     if (answer === '') {
       return;
     } 
-    setAnswer('');
+
     setClassResponse('normal');
     if (Number(answer) === rightAnswer) {
       setColor('#32BF00');
@@ -89,6 +90,7 @@ const Index = () => {
       setMessage('É maior');
       setNumberShown(answer);
     }
+    setAnswer('');
   };
 
   return (
@@ -101,21 +103,27 @@ const Index = () => {
       <p className={`message ${classResponse}`}>{message}</p>
 
       <div className="numberShown">
-        {numberShown.toString().split('').map((number, index) => <DigitalNumber key={index} number={Number(number)} color={color} />)}
+        {numberShown.toString().split('').map((number, index) =>
+          <DigitalNumber
+            key={index}
+            number={Number(number)}
+            color={color}
+          />
+        )}
       </div>
 
       <div className="buttonNewGameContainer">
         {endGame && (
           <button
-          className="button buttonNewGame"
-          onClick={handleNewGame}
-        >
-          NOVA PARTIDA
-        </button>
+            className="button buttonNewGame"
+            onClick={handleNewGame}
+          >
+            NOVA PARTIDA
+          </button>
         )}
       </div>
       
-      <div className="form">
+      <form>
         <input
           id="input"
           className="input"
@@ -132,7 +140,7 @@ const Index = () => {
         >
           ENVIAR
         </button>
-      </div>
+      </form>
     </>
   )
 }
