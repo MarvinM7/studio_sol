@@ -134,6 +134,7 @@ const Index = () => {
           onChange={handleInput}
         />
         <button
+          data-testid="sendButton"
           className="button buttonSend"
           disabled={endGame || answer === ''}
           onClick={handleAnswer}
