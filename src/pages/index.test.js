@@ -8,7 +8,7 @@ describe("<Index />", () => {
     expect(screen.getByText(/QUAL É O NÚMERO?/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/Digite o palpite/i)).toBeInTheDocument();
     expect(screen.getByTestId(/sendButton/i)).toBeInTheDocument();
-  });
+  }); 
   
   it('should not allow letters to be inputted', () => {
     render(<Index />);
