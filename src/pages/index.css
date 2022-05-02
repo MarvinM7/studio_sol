@@ -1,0 +1,102 @@
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  background-image: linear-gradient(180deg, #EF6C00 40%, #DB6300 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+hr {
+  width: 85%;
+  border-top: 1px solid #CFCFCF;
+}
+
+.message {
+  height: 35px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.normal {
+  color: #FF6600;
+}
+
+.rightAnswer {
+  color: #32BF00;
+}
+
+.error {
+  color: #CC3300;
+}
+
+.numberShown {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 8px;
+  justify-content: center;
+  align-items: center;
+  width: 176.16px;
+  height: 150px;
+}
+
+.button {
+  border: 0px;
+  height: 42px;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.buttonNewGameContainer {
+  height: 100px;
+}
+
+.buttonNewGame {
+  background: linear-gradient(180deg, #434854 0%, #9E9E9E 100%);
+  width: 130px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 42px;
+  width: 298px;
+}
+
+.input {
+  border: 1px solid #CFCFCF;
+  height: 38px;
+  width: 205px;
+  border-radius: 4px;
+  padding-left: 12px;
+}
+
+.input:focus {
+  outline: none !important;
+  border: 1px solid #FF6600;
+}
+
+.input:disabled,
+.input[disabled]{
+  cursor: not-allowed;
+}
+
+::placeholder {
+  color: #CFCFCF;
+  font-size: 12px;
+}
+
+.buttonSend {
+  background: linear-gradient(180deg, #EF6C00 0%, #C0661C 100%);
+  width: 70px;
+}
+
+.buttonSend:disabled,
+.buttonSend[disabled]{
+  background: #DDDDDD;
+  cursor: not-allowed;
+}
